@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'matt-bauer-capstone-follower-fe';
+  viewSurveys: boolean = false
+
+  viewSurveysClick() {
+    this.viewSurveys = true
+  }
 }

@@ -1,0 +1,35 @@
+<div *ngIf="question.index === index">
+  <div *ngIf="question.responseType === 'Text'">
+    {{question.index + 1}}.<br>
+    {{question.prompt}}<br>
+    Response: <input type="text" [(ngModel)]="questionResponse">
+  </div>
+
+  <div *ngIf="question.responseType === 'Multiple Choice'">
+    {{question.index + 1}}.<br>
+    {{question.prompt}}<br>
+    <div *ngFor="let option of question.responseOptions">
+      <input type="radio" name="show options" id="{{option}}" value="{{option}}" [(ngModel)]="questionResponse">
+      <label for="{{option}}">
+        {{option}}
+      </label>
+    </div>
+  </div>
+
+  <div *ngIf="question.responseType === 'True/False'">
+    {{question.index + 1}}.<br>
+    {{question.prompt}}<br>
+    <div *ngFor="let option of question.responseOptions">
+      <input type="radio" name="show options" id="{{option}}" value="{{option}}" [(ngModel)]="questionResponse">
+      <label for="{{option}}">
+        {{option}}
+      </label>
+    </div>
+    <div>{{blankFieldMessage}}</div>
+  </div>
+  <button (click)="onDirectionClick('<')" *ngIf="index > 0">Previous</button>
+  <button (click)="onDirectionClick('>')" *ngIf="index !== survey.questionList.length - 1">Next</button>
+  <button (click)="onDirectionClick('Submit')" *ngIf="index === survey.questionList.length - 1">Submit</button>
+  <button (click)="deBug()">DEBUG</button>
+</div>
+
