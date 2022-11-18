@@ -35,6 +35,7 @@ export class SurveyListComponent implements OnInit, OnDestroy {
 
   onViewSurveyClick(survey: IProcess) {
     this.selectedSurvey = survey
+    this.processService.startNewSurvey()
   }
 
   onSurveyCancelCLick() {

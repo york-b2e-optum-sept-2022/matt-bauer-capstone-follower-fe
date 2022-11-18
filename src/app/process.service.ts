@@ -33,4 +33,12 @@ export class ProcessService {
       }
     )
   }
+
+  startNewSurvey(){
+    this.httpService.startNewSurvey().pipe(first()).subscribe({
+        next: value => {},
+        error: err => {}
+      }
+    )
+  }
 }
