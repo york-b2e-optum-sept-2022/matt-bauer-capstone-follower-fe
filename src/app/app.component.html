@@ -1,9 +1,22 @@
-
-{{httpErrorMessage}}
-<div *ngIf="!viewSurveys">
-  <button (click)="viewSurveysClick()">View Surveys</button>
+<div class="d-flex flex-column justify-content-center vh-100" *ngIf="!viewSurveys">
+  <h1 class="text-center m-4">Informed</h1>
+  <div class="d-flex align-items-center justify-content-center">
+    <div class="d-flex flex-column ">
+      <button class="btn btn-lg btn-info m-3" (click)="viewSurveysClick()">View Surveys</button>
+    </div>
+  </div>
 </div>
 
-<div *ngIf="viewSurveys">
-  <app-survey-list></app-survey-list>
+<div class="vh-100" *ngIf="viewSurveys">
+  <nav class="navbar shadow sticky-top bg-info d-flex justify-content-center flex-column">
+    <h1 class="text-center m-4">Informed</h1>
+
+
+  </nav>
+  {{httpErrorMessage}}
+
+
+  <div *ngIf="viewSurveys">
+    <app-survey-list></app-survey-list>
+  </div>
 </div>
