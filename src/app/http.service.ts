@@ -10,7 +10,6 @@ import {v4 as uuidv4} from "uuid";
   providedIn: 'root'
 })
 export class HttpService {
-  jwt: string = ""
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,14 +18,17 @@ export class HttpService {
     ) as Observable<IProcess[]>
   }
 
-  createFinishedProcess(survey: IFinishedProcess) :Observable<IFinishedProcess> {
+  createFinishedProcess(survey: IJwtObject) :Observable<IJwtObject> {
       return this.httpClient.post("http://localhost:8080/api/response", survey
-      )as Observable<IFinishedProcess>
+      )as Observable<IJwtObject>
   }
 
-  startNewSurvey() :Observable<IJwtObject> {
-    //TODO get UUID
-    return this.httpClient.post("http://localhost:8080/api/response/start" , uuidv4()) as Observable<IJwtObject>
+  startNewSurvey() :Observable<{jwt: string}> {
+    return this.httpClient.post("http://localhost:8080/api/response/start" , uuidv4()) as Observable<{jwt: string}>
+  }
+
+  cancelSurvey(jwt: string) {
+    return this.httpClient.put("http://localhost:8080/api/response/cancel", jwt)
   }
 
 

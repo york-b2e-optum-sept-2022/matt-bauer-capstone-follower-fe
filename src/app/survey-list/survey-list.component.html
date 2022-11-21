@@ -10,6 +10,6 @@
     [survey]="selectedSurvey"
     (onSurveySubmit)="isSurveyComplete($event)"
   ></app-survey>
-  <button *ngIf="!isSurveyFinished" (click)="onSurveyCancelCLick()">Cancel</button>
-  <button *ngIf="isSurveyFinished" (click)="onSurveyCancelCLick()">View More Surveys</button>
+  <button *ngIf="!isSurveyFinished" (click)="onSurveyCancelClick(false)">Cancel</button>
+  <button *ngIf="isSurveyFinished" (click)="onSurveyCancelClick(true)">View More Surveys</button>
 </div>
