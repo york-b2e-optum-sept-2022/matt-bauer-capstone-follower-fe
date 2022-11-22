@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angula
 import {IProcess} from "../_Interfaces/IProcess";
 import {ProcessService} from "../process.service";
 import {Subject, takeUntil} from "rxjs";
-import {IStage} from "../_Interfaces/IStage";
 import {IResponse} from "../_Interfaces/IResponse";
 
 @Component({
@@ -14,10 +13,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
   @Output () onSurveySubmit = new EventEmitter<boolean>()
   @Input() survey!: IProcess | null
   selectedSurvey!: IProcess
-  surveyList: IProcess[] = []
   onDestroy$ = new Subject()
-  isCreatingQuestion: boolean = false
-  onEditTitle: string | null = null
   questionIndex: number = 0;
   responseList: IResponse[] = []
   surveyComplete: boolean = false

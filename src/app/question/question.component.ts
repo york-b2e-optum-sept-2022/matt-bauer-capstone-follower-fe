@@ -1,7 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IStage} from "../_Interfaces/IStage";
 import {IProcess} from "../_Interfaces/IProcess";
-import {ProcessService} from "../process.service";
 import {IResponse} from "../_Interfaces/IResponse";
 
 @Component({
@@ -9,7 +8,7 @@ import {IResponse} from "../_Interfaces/IResponse";
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.css']
 })
-export class QuestionComponent implements OnInit {
+export class QuestionComponent {
 
   @Output() sendResponse = new EventEmitter<IResponse>()
   @ Output() changeQuestion = new EventEmitter<string>()
@@ -19,17 +18,7 @@ export class QuestionComponent implements OnInit {
   questionResponse: string | null = null
   blankFieldMessage: string | null = null
 
-  constructor(private processService: ProcessService) {
-  }
-
-  ngOnInit(): void {
-  }
-
-
-  deBug() {
-    console.log(this.blankFieldMessage)
-    console.log(this.questionResponse)
-    this.questionResponse = null
+  constructor() {
   }
 
   onDirectionClick(sign: string) {
