@@ -1,16 +1,16 @@
-<div class="d-flex align-items-center flex-column">
+<div class="d-flex align-items-center flex-column bg-black">
 <div *ngIf="!selectedSurvey">
 <input
   (input)="filterSurveys($event)"
   type="text" placeholder="Search..." class="form-control m-1">
 </div>
-  <h2 *ngIf="!selectedSurvey">All Surveys</h2>
-  <h3 class="mt-5" *ngIf="selectedSurvey">{{selectedSurvey.title}}</h3>
+  <h2 class="text-light" *ngIf="!selectedSurvey">All Surveys</h2>
+  <h3 class="mt-5 text-light" *ngIf="selectedSurvey">{{selectedSurvey.title}}</h3>
   <div class="w-75">
     <div *ngIf="!selectedSurvey">
       <div *ngFor="let survey of displayList" class="card d-flex flex-row justify-content-between align-items-center p-2 mb-1">
         {{survey.title}}
-        <button (click)="onViewSurveyClick(survey)">View</button>
+        <button class="btn btn-link-dark btn-sm me-3" (click)="onViewSurveyClick(survey)">View</button>
       </div>
     </div>
 
@@ -20,8 +20,8 @@
         (onSurveySubmit)="isSurveyComplete($event)"
       ></app-survey>
       <div class="d-flex justify-content-center mt-5">
-        <button *ngIf="!isSurveyFinished" (click)="onSurveyCancelClick(false)">Cancel</button>
-        <button *ngIf="isSurveyFinished" (click)="onSurveyCancelClick(true)">View More Surveys</button>
+        <button class="btn btn-outline-secondary" *ngIf="!isSurveyFinished" (click)="onSurveyCancelClick(false)">Cancel</button>
+        <button class="btn btn-outline-secondary" *ngIf="isSurveyFinished" (click)="onSurveyCancelClick(true)">View More Surveys</button>
       </div>
     </div>
   </div>

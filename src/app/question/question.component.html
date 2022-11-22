@@ -30,11 +30,11 @@
 
   <div class="m-5" style="width: 30rem">
     <div class="d-flex float-start">
-      <button (click)="onDirectionClick('<')" *ngIf="index > 0">Previous</button>
+      <button class="btn btn btn-outline-light" (click)="onDirectionClick('<')" *ngIf="index > 0">Previous</button>
     </div>
     <div class="d-flex float-end">
-      <button (click)="onDirectionClick('>')" *ngIf="index !== survey.questionList.length - 1">Next</button>
-      <button (click)="onDirectionClick('Submit')" *ngIf="index === survey.questionList.length - 1">Submit</button>
+      <button class="btn btn-outline-light" (click)="onDirectionClick('>')" *ngIf="index !== survey.questionList.length - 1">Next</button>
+      <button class="btn btn-outline-success" (click)="onDirectionClick('Submit')" *ngIf="index === survey.questionList.length - 1">Submit</button>
     </div>
   </div>
 </div>
