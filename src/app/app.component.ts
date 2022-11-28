@@ -11,15 +11,11 @@ export class AppComponent {
   viewSurveys: boolean = false
   httpErrorMessage: string | null = null
 
-
   constructor(private processService: ProcessService) {
     this.processService.$httpErrorMessage.subscribe(
       message => this.httpErrorMessage = message
     )
-
   }
-
-
 
   viewSurveysClick() {
     this.viewSurveys = true

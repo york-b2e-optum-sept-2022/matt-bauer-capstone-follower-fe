@@ -57,7 +57,6 @@ export class SurveyComponent implements OnInit, OnDestroy {
     if(index >= 0)
         this.responseList[index] = response
     else this.responseList.push(response)
-    console.log(this.responseList)
       }
 
   createFinishedProcess() {

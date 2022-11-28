@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {IProcess} from "../_Interfaces/IProcess";
 import {ProcessService} from "../process.service";
 import {Subject, takeUntil} from "rxjs";
@@ -8,14 +8,13 @@ import {Subject, takeUntil} from "rxjs";
   templateUrl: './survey-list.component.html',
   styleUrls: ['./survey-list.component.css']
 })
-export class SurveyListComponent implements OnInit, OnDestroy {
+export class SurveyListComponent implements OnDestroy {
 
   surveyList: IProcess[] = []
   selectedSurvey: IProcess | null = null
   onDestroy$ = new Subject();
   isSurveyFinished: boolean = false
   displayList: IProcess[] = []
-
 
   constructor(private processService: ProcessService) {
     this.processService.$surveyList.pipe(takeUntil(this.onDestroy$)).subscribe(
@@ -25,10 +24,6 @@ export class SurveyListComponent implements OnInit, OnDestroy {
       }
     )
   }
-
-  ngOnInit(): void {
-  }
-
 
   ngOnDestroy() {
     this.onDestroy$.next(null)
@@ -51,13 +46,11 @@ export class SurveyListComponent implements OnInit, OnDestroy {
   }
 
   filterSurveys(filterText: any) {
-      this.displayList = [...this.surveyList]
-    if (filterText.target.value === "" || filterText.target.value === null) {
+    this.displayList = [...this.surveyList]
+    if (filterText.target.value === "" || filterText.target.value === null)
       return
-    }
     const regexp = new RegExp(filterText.target.value, 'i')
-    let filteredList = this.displayList.filter(survey => regexp.test(survey.title))
-    this.displayList = filteredList
+    this.displayList = this.displayList.filter(survey => regexp.test(survey.title))
   }
 }
 
