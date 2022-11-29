@@ -26,6 +26,7 @@ export class QuestionComponent {
     if (this.questionResponse)
       this.sendResponse.emit({
         id: -1,
+        index: this.index,
         prompt: this.question.prompt,
         response: this.questionResponse,
         responseType: this.question.responseType

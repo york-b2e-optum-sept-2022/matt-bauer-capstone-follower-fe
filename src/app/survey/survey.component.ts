@@ -17,6 +17,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
   questionIndex: number = 0;
   responseList: IResponse[] = []
   surveyComplete: boolean = false
+  httpErrorMessage: string | null = null
 
   constructor(private processService: ProcessService) {
     this.processService.$surveyList.pipe(takeUntil(this.onDestroy$)).subscribe(
@@ -28,6 +29,9 @@ export class SurveyComponent implements OnInit, OnDestroy {
         if (this.selectedSurvey.questionList)
           this.selectedSurvey.questionList.sort((a, b) => a.index - b.index)
       }
+    )
+    this.processService.$httpErrorMessage.pipe(takeUntil(this.onDestroy$)).subscribe(
+      message => this.httpErrorMessage = message
     )
   }
 

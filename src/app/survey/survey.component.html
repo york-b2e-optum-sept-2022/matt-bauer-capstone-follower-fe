@@ -1,9 +1,13 @@
 <div class="d-flex justify-content-center vh-75 align-items-center">
   <div *ngIf="!surveyComplete">
+    <div class="text-center text-light"
+         *ngIf="!selectedSurvey.questionList || selectedSurvey.questionList.length === 0"
+    >No questions currently exist in survey.
+    </div>
     <div *ngIf="selectedSurvey.questionList !== null">
 
       <div class="mt-3 vw-75 vh-75">
-        <app-question  *ngFor="let question of selectedSurvey.questionList"
+        <app-question *ngFor="let question of selectedSurvey.questionList"
                       [question]="question"
                       [survey]="selectedSurvey"
                       [index]="questionIndex"
@@ -15,7 +19,7 @@
     </div>
   </div>
 
-  <div *ngIf="surveyComplete">
+  <div *ngIf="surveyComplete && !httpErrorMessage">
     <div class="mt-5 text-light">Thank you for completing survey!</div>
   </div>
 </div>

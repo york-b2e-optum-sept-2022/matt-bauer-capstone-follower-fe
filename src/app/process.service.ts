@@ -47,7 +47,7 @@ export class ProcessService {
             this.jwt = null
           },
           error: err => {
-            if (err.status === 401) {
+            if (err.status === 500) {
               this.$httpErrorMessage.next("Unable to submit response due to security concern, please restart survey.")
               return
             }
