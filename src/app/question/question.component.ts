@@ -27,7 +27,8 @@ export class QuestionComponent {
       this.sendResponse.emit({
         id: -1,
         prompt: this.question.prompt,
-        response: this.questionResponse
+        response: this.questionResponse,
+        responseType: this.question.responseType
       })
     this.changeQuestion.emit(sign)
     this.blankFieldMessage = null

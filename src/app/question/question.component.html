@@ -1,25 +1,25 @@
 <div *ngIf="question.index === index" class="d-flex flex-column align-items-center justify-content-center vh-75">
   <div class="card mt-3 p-1 d-flex flex-column justify-content-center" style="width: 50rem; height: 20rem">
-    <div class="m-5" *ngIf="question.responseType === 'Text'">
+    <div class="m-5" *ngIf="question.responseType === 'TEXT'">
       <div class="mb-3">{{question.index + 1}}. {{question.prompt}}</div>
       Response: <input type="text" [(ngModel)]="questionResponse">
     </div>
 
-    <div class="m-5" *ngIf="question.responseType === 'Multiple Choice'">
+    <div class="m-5" *ngIf="question.responseType === 'MULTIPLE CHOICE'">
       <div class="mb-3">{{question.index + 1}}. {{question.prompt}}</div>
       <div *ngFor="let option of question.responseOptions">
         <input type="radio" name="show options" id="{{option}}" value="{{option}}" [(ngModel)]="questionResponse">
-        <label for="{{option}}">
+        <label class="ms-2" for="{{option}}">
           {{option}}
         </label>
       </div>
     </div>
 
-    <div class="m-5" *ngIf="question.responseType === 'True/False'">
+    <div class="m-5" *ngIf="question.responseType === 'TRUE/FALSE'">
       <div class="mb-3">{{question.index + 1}}. {{question.prompt}}</div>
       <div *ngFor="let option of question.responseOptions">
         <input type="radio" name="show options" id="{{option}}" value="{{option}}" [(ngModel)]="questionResponse">
-        <label for="{{option}}">
+        <label class="ms-2" for="{{option}}">
           {{option}}
         </label>
       </div>
