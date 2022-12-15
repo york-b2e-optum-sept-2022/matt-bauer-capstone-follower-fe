@@ -17,7 +17,7 @@ export class AppComponent {
     )
   }
 
-  viewSurveysClick() {
+  viewSurveysClick(): void {
     this.viewSurveys = true
   }
 }

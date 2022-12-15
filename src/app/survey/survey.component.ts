@@ -42,12 +42,12 @@ export class SurveyComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.onDestroy$.next(null)
     this.onDestroy$.complete()
   }
 
-  onDirectionChange(sign: string) {
+  onDirectionChange(sign: string): void {
     if (sign === '<')
       this.questionIndex--
     if (sign === '>')
@@ -56,14 +56,14 @@ export class SurveyComponent implements OnInit, OnDestroy {
       this.createFinishedProcess()
   }
 
-  addResponse(response: IResponse) {
+  addResponse(response: IResponse): void {
         let index = this.responseList.findIndex(resp => resp.prompt === response.prompt)
     if(index >= 0)
         this.responseList[index] = response
     else this.responseList.push(response)
       }
 
-  createFinishedProcess() {
+  createFinishedProcess(): void {
     this.processService.createFinishedProcess(
       {
         id: -1,

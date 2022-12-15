@@ -23,7 +23,7 @@ export class ProcessService {
     this.getAllProcesses()
   }
 
-  getAllProcesses() {
+  getAllProcesses(): void {
     this.httpService.getAllProcesses().pipe(first()).subscribe({
         next: list => {
           this.$surveyList.next(list)
@@ -35,7 +35,7 @@ export class ProcessService {
     )
   }
 
-  createFinishedProcess(surveyResponse: IFinishedProcess) {
+  createFinishedProcess(surveyResponse: IFinishedProcess): void {
     if (this.jwt)
       this.httpService.createFinishedProcess(
         {
@@ -49,6 +49,7 @@ export class ProcessService {
           error: err => {
             if (err.status === 500) {
               this.$httpErrorMessage.next("Unable to submit response due to security concern, please restart survey.")
+              this.cancelSurvey()
               return
             }
             this.$httpErrorMessage.next("An unknown error occurred, please try again later")
@@ -58,7 +59,7 @@ export class ProcessService {
       )
   }
 
-  startNewSurvey() {
+  startNewSurvey(): void {
     this.httpService.startNewSurvey().pipe(first()).subscribe({
         next: jwt => {
           this.jwt = jwt.jwt
@@ -71,7 +72,7 @@ export class ProcessService {
     )
   }
 
-  cancelSurvey() {
+  cancelSurvey(): void {
     if (this.jwt)
       this.httpService.cancelSurvey(this.jwt).pipe(first()).subscribe({
           next: () => {

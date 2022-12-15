@@ -27,7 +27,7 @@ export class HttpService {
     return this.httpClient.post("http://localhost:8080/api/response/start", uuidv4()) as Observable<{ jwt: string }>
   }
 
-  cancelSurvey(jwt: string) {
+  cancelSurvey(jwt: string): Observable<Object> {
     return this.httpClient.put("http://localhost:8080/api/response/cancel", jwt)
   }
 }

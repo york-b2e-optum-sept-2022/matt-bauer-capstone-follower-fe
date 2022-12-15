@@ -18,8 +18,8 @@ export class QuestionComponent {
   questionResponse: string | null = null
   blankFieldMessage: string | null = null
 
-  onDirectionClick(sign: string) {
-    if (sign === '>' && !this.questionResponse) {
+  onDirectionClick(sign: string): void {
+    if ((sign === '>' || sign === "Submit") && !this.questionResponse) {
       this.blankFieldMessage = "Please respond to the question"
       return
     }
