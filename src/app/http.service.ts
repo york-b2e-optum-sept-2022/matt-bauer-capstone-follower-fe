@@ -10,24 +10,26 @@ import {v4 as uuidv4} from "uuid";
 })
 export class HttpService {
 
+  private hostURL: String = "http://10.110.87.54:8080"
+
   constructor(private httpClient: HttpClient) {
   }
 
   getAllProcesses(): Observable<IProcess[]> {
-    return this.httpClient.get("http://localhost:8080/api/process"
+    return this.httpClient.get(this.hostURL + "/api/process"
     ) as Observable<IProcess[]>
   }
 
   createFinishedProcess(survey: IJwtObject): Observable<IJwtObject> {
-    return this.httpClient.post("http://localhost:8080/api/response", survey
+    return this.httpClient.post(this.hostURL + "/api/response", survey
     ) as Observable<IJwtObject>
   }
 
   startNewSurvey(): Observable<{ jwt: string }> {
-    return this.httpClient.post("http://localhost:8080/api/response/start", uuidv4()) as Observable<{ jwt: string }>
+    return this.httpClient.post(this.hostURL + "/api/response/start", uuidv4()) as Observable<{ jwt: string }>
   }
 
   cancelSurvey(jwt: string): Observable<Object> {
-    return this.httpClient.put("http://localhost:8080/api/response/cancel", jwt)
+    return this.httpClient.put(this.hostURL + "/api/response/cancel", jwt)
   }
 }
